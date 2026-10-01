@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shin-chan in Kasukabe</title>
+    <meta name="description" content="A fan-made, interactive Crayon Shin-chan page. He follows your cursor or finger and runs for Chocobi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Crayon "line boil" filters: three noise seeds cycled to make outlines wobble like hand-drawn animation -->
+    <svg class="defs" aria-hidden="true" focusable="false">
+        <defs>
+            <filter id="boil0" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" result="n"/>
+                <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+            </filter>
+            <filter id="boil1" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="17" result="n"/>
+                <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+            </filter>
+            <filter id="boil2" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="41" result="n"/>
+                <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+            </filter>
+            <symbol id="chocobi" viewBox="0 0 40 40">
+                <g stroke="#2A211C" stroke-width="2.5" stroke-linejoin="round">
+                    <rect x="6" y="8" width="28" height="26" rx="3" fill="#FFB23F"/>
+                    <rect x="6" y="8" width="28" height="8" rx="2" fill="#E63B2E"/>
+                    <path d="M20 17 L21.8 21.6 L26.7 21.8 L22.9 24.9 L24.1 29.7 L20 27 L15.9 29.7 L17.1 24.9 L13.3 21.8 L18.2 21.6 Z" fill="#7A4422" stroke-width="1.5"/>
+                </g>
+            </symbol>
+        </defs>
+    </svg>
+
+    <header class="topbar">
+        <a class="logo" href="#top">Shin-chan</a>
+        <nav class="nav" aria-label="Sections">
+            <a href="#family">Family</a>
+            <a href="#lines">His lines</a>
+            <a href="#snacks">Chocobi</a>
+        </nav>
+        <div class="counter" aria-label="Chocobi eaten">
+            <svg aria-hidden="true"><use href="#chocobi"/></svg>
+            <span data-count>0</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="top">
+            <div class="clouds" aria-hidden="true">
+                <svg class="cloud c1" viewBox="0 0 200 90"><path d="M30 75 Q5 75 12 55 Q8 32 38 36 Q45 10 80 18 Q100 0 125 20 Q160 12 165 42 Q195 45 185 68 Q182 80 160 76 Z"/></svg>
+                <svg class="cloud c2" viewBox="0 0 200 90"><path d="M30 75 Q5 75 12 55 Q8 32 38 36 Q45 10 80 18 Q100 0 125 20 Q160 12 165 42 Q195 45 185 68 Q182 80 160 76 Z"/></svg>
+                <svg class="cloud c3" viewBox="0 0 200 90"><path d="M30 75 Q5 75 12 55 Q8 32 38 36 Q45 10 80 18 Q100 0 125 20 Q160 12 165 42 Q195 45 185 68 Q182 80 160 76 Z"/></svg>
+            </div>
+
+            <div class="wrap hero-copy">
+                <h1 class="boil">Shin-chan wandered onto your screen.</h1>
+                <p class="lede">He follows your cursor around the page, or your finger on a phone. Click or tap any empty spot to drop a Chocobi, and he'll run for it.</p>
+                <div class="cta">
+                    <a class="btn btn-red" href="#family">Meet the family</a>
+                    <a class="btn btn-yellow" href="#lines">Make him talk</a>
+                </div>
+            </div>
+
+            <svg class="town" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                <path d="M0 150 Q360 90 720 140 T1440 120 V260 H0 Z" fill="#9AD67F"/>
+                <g stroke="#2A211C" stroke-width="4" stroke-linejoin="round">
+                    <!-- left house -->
+                    <rect x="80" y="115" width="150" height="110" fill="#FFF4D6"/>
+                    <path d="M60 120 L155 58 L250 120 Z" fill="#E63B2E"/>
+                    <rect x="108" y="142" width="36" height="34" fill="#8FD3F4"/>
+                    <rect x="170" y="160" width="32" height="65" fill="#7A4422"/>
+                    <!-- tree -->
+                    <rect x="372" y="150" width="16" height="70" fill="#7A4422"/>
+                    <circle cx="380" cy="135" r="42" fill="#5DB04E"/>
+                    <!-- the Nohara house -->
+                    <rect x="590" y="100" width="210" height="125" fill="#FFFFFF"/>
+                    <path d="M565 106 L695 36 L825 106 Z" fill="#3E7CC9"/>
+                    <rect x="615" y="128" width="44" height="40" fill="#FFCE3A"/>
+                    <rect x="730" y="128" width="44" height="40" fill="#8FD3F4"/>
+                    <rect x="675" y="160" width="40" height="65" fill="#E63B2E"/>
+                    <circle cx="706" cy="194" r="3" fill="#2A211C"/>
+                    <!-- tree -->
+                    <rect x="932" y="160" width="14" height="60" fill="#7A4422"/>
+                    <circle cx="939" cy="146" r="34" fill="#5DB04E"/>
+                    <!-- right houses -->
+                    <rect x="1040" y="128" width="130" height="97" fill="#FFE7A0"/>
+                    <path d="M1022 132 L1105 80 L1188 132 Z" fill="#7BC86C"/>
+                    <rect x="1066" y="152" width="30" height="30" fill="#8FD3F4"/>
+                    <rect x="1250" y="110" width="140" height="115" fill="#F6D3E0"/>
+                    <path d="M1232 115 L1320 60 L1408 115 Z" fill="#2A211C"/>
+                    <rect x="1272" y="138" width="34" height="34" fill="#8FD3F4"/>
+                    <rect x="1330" y="160" width="30" height="65" fill="#7A4422"/>
+                </g>
+                <path d="M0 200 Q720 168 1440 205 V260 H0 Z" fill="#7BC86C" stroke="#2A211C" stroke-width="4"/>
+            </svg>
+        </section>
+
+        <section class="family" id="family">
+            <div class="wrap">
+                <h2>The Nohara household</h2>
+                <p class="section-note">Tap a photo to flip it over.</p>
+
+                <div class="board">
+                    <button class="photo" type="button" data-shin="Dad, your feet stink!" aria-pressed="false">
+                        <span class="tape" aria-hidden="true"></span>
+                        <span class="photo-inner">
+                            <span class="face front" style="--bg:#CFE6F7">
+                                <svg viewBox="0 0 120 120" aria-hidden="true">
+                                    <g stroke="#2A211C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+                                        <path d="M28 120 Q60 96 92 120 Z" fill="#fff"/>
+                                        <path d="M56 103 L64 103 L62 120 L58 120 Z" fill="#E63B2E"/>
+                                        <circle cx="27" cy="68" r="7" fill="#FFD7B5"/>
+                                        <circle cx="93" cy="68" r="7" fill="#FFD7B5"/>
+                                        <circle cx="60" cy="66" r="34" fill="#FFD7B5"/>
+                                        <path d="M27 60 Q28 24 60 24 Q92 24 93 60 Q84 44 72 46 L66 36 L58 46 Q44 42 27 60 Z" fill="#2A211C"/>
+                                        <path d="M46 67 h8 M66 67 h8" stroke-width="4"/>
+                                        <path d="M52 82 Q60 87 68 82" fill="none"/>
+                                    </g>
+                                    <g fill="#8a8580">
+                                        <circle cx="47" cy="88" r="1.6"/><circle cx="53" cy="92" r="1.6"/><circle cx="60" cy="94" r="1.6"/><circle cx="67" cy="92" r="1.6"/><circle cx="73" cy="88" r="1.6"/>
+                                    </g>
+                                </svg>
+                                <span class="name">Hiroshi</span>
+                            </span>
+                            <span class="face back">Dad. A salaryman with a 32-year mortgage, and feet that can knock out a grown adult.</span>
+                        </span>
+                    </button>
+
+                    <button class="photo" type="button" data-shin="Uh oh. Mom's making the scary face." aria-pressed="false">
+                        <span class="tape" aria-hidden="true"></span>
+                        <span class="photo-inner">
+                            <span class="face front" style="--bg:#FBD6E0">
+                                <svg viewBox="0 0 120 120" aria-hidden="true">
+                                    <g stroke="#2A211C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+                                        <path d="M22 80 Q14 30 60 22 Q106 30 98 80 Q100 100 86 104 L34 104 Q20 100 22 80 Z" fill="#6B3A1E"/>
+                                        <path d="M28 120 Q60 100 92 120 Z" fill="#F6A5C0"/>
+                                        <ellipse cx="60" cy="64" rx="28" ry="32" fill="#FFD7B5"/>
+                                        <path d="M32 56 Q40 28 60 30 Q80 28 88 56 Q76 44 66 48 Q58 40 50 48 Q40 44 32 56 Z" fill="#6B3A1E"/>
+                                        <path d="M43 56 L54 60 M77 56 L66 60" stroke-width="3.5"/>
+                                        <circle cx="50" cy="67" r="3" fill="#2A211C"/>
+                                        <circle cx="70" cy="67" r="3" fill="#2A211C"/>
+                                        <path d="M52 83 Q60 78 68 83" fill="none" stroke="#E63B2E"/>
+                                    </g>
+                                </svg>
+                                <span class="name">Misae</span>
+                            </span>
+                            <span class="face back">Mom. Runs the house, wins every bargain sale, and her knuckle drill to the head is legendary.</span>
+                        </span>
+                    </button>
+
+                    <button class="photo" type="button" data-shin="Hima! Don't touch my Action Kamen!" aria-pressed="false">
+                        <span class="tape" aria-hidden="true"></span>
+                        <span class="photo-inner">
+                            <span class="face front" style="--bg:#FFE9A8">
+                                <svg viewBox="0 0 120 120" aria-hidden="true">
+                                    <g stroke="#2A211C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+                                        <path d="M34 120 Q60 104 86 120 Z" fill="#F6A5C0"/>
+                                        <circle cx="60" cy="70" r="32" fill="#FFD7B5"/>
+                                        <path d="M58 39 Q53 25 66 27 Q60 31 62 39" fill="#F3C08A"/>
+                                        <circle cx="48" cy="70" r="6" fill="#2A211C"/>
+                                        <circle cx="72" cy="70" r="6" fill="#2A211C"/>
+                                        <circle cx="60" cy="86" r="3" fill="#E63B2E"/>
+                                    </g>
+                                    <circle cx="50" cy="68" r="2" fill="#fff"/>
+                                    <circle cx="74" cy="68" r="2" fill="#fff"/>
+                                    <ellipse cx="40" cy="82" rx="6" ry="4" fill="#F6A5C0"/>
+                                    <ellipse cx="80" cy="82" rx="6" ry="4" fill="#F6A5C0"/>
+                                </svg>
+                                <span class="name">Himawari</span>
+                            </span>
+                            <span class="face back">Baby sister. Crawls straight for anything shiny and any handsome face in the room.</span>
+                        </span>
+                    </button>
+
+                    <button class="photo" type="button" data-shin="Shiro, cotton candy!" data-shiro="cotton" aria-pressed="false">
+                        <span class="tape" aria-hidden="true"></span>
+                        <span class="photo-inner">
+                            <span class="face front" style="--bg:#BFE3B4">
+                                <svg viewBox="0 0 120 120" aria-hidden="true">
+                                    <g stroke="#2A211C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+                                        <ellipse cx="36" cy="42" rx="9" ry="13" fill="#fff"/>
+                                        <ellipse cx="84" cy="42" rx="9" ry="13" fill="#fff"/>
+                                        <circle cx="60" cy="66" r="34" fill="#fff"/>
+                                        <circle cx="48" cy="62" r="3.5" fill="#2A211C"/>
+                                        <circle cx="72" cy="62" r="3.5" fill="#2A211C"/>
+                                        <ellipse cx="60" cy="74" rx="4" ry="3" fill="#2A211C"/>
+                                        <path d="M54 80 Q60 86 66 80" fill="none"/>
+                                    </g>
+                                </svg>
+                                <span class="name">Shiro</span>
+                            </span>
+                            <span class="face back">The family dog. Shin-chan found him in a cardboard box. He curls up into a ball on command: cotton candy!</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="lines" id="lines">
+            <div class="wrap">
+                <h2>Make him say it</h2>
+                <p class="section-note">Pick a line. He'll say it wherever he's standing.</p>
+                <div class="line-list">
+                    <button class="say say-l" type="button" data-say="Ora, Shin-chan desu!" data-act="wave">Ora, Shin-chan desu!</button>
+                    <button class="say say-m" type="button" data-say="Action beam! Wahahaha!" data-act="beam">Action beam!</button>
+                    <button class="say say-xl" type="button" data-say="Buri buri~ buri buri~" data-act="dance">Buri buri~</button>
+                    <button class="say say-s" type="button" data-say="Hey miss, do you like natto with green peppers?" data-act="peppers">Hey miss, do you like natto with green peppers?</button>
+                    <button class="say say-m" type="button" data-say="Chocobi, please!" data-act="snack">Chocobi, please!</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="snacks" id="snacks">
+            <div class="wrap snacks-grid">
+                <div>
+                    <h2>Feed him Chocobi</h2>
+                    <p>Click or tap any empty spot on the page and a box lands right there. He drops whatever he's doing to go get it.</p>
+                    <button class="btn btn-red" type="button" id="drop-near">Drop a box near him</button>
+                </div>
+                <p class="tally"><span class="tally-num" data-count>0</span><span class="tally-label">boxes eaten so far</span></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="wrap">
+            <p>A fan-made page drawn with HTML, CSS and JavaScript. Crayon Shin-chan was created by Yoshito Usui.</p>
+        </div>
+    </footer>
+
+    <!-- Shiro trails behind -->
+    <div id="shiro" aria-hidden="true">
+        <div class="shiro-flip">
+            <svg viewBox="0 0 80 64" class="shiro-svg">
+                <g stroke="#2A211C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+                    <rect x="22" y="50" width="8" height="11" rx="3" fill="#fff"/>
+                    <rect x="46" y="50" width="8" height="11" rx="3" fill="#fff"/>
+                    <circle cx="12" cy="34" r="6" fill="#fff" class="shiro-tail"/>
+                    <ellipse cx="36" cy="42" rx="24" ry="15" fill="#fff"/>
+                    <ellipse cx="52" cy="14" rx="6" ry="9" fill="#fff"/>
+                    <ellipse cx="68" cy="14" rx="6" ry="9" fill="#fff"/>
+                    <circle cx="60" cy="28" r="15" fill="#fff"/>
+                    <circle cx="57" cy="26" r="2.4" fill="#2A211C"/>
+                    <circle cx="66" cy="26" r="2.4" fill="#2A211C"/>
+                    <ellipse cx="72" cy="32" rx="3" ry="2.4" fill="#2A211C"/>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Shin-chan himself -->
+    <div id="shin" aria-hidden="true">
+        <div class="bubble"></div>
+        <div class="shin-hop">
+            <div class="shin-flip">
+                <svg viewBox="0 0 200 250" class="shin-svg">
+                    <rect class="ray" x="188" y="142" width="150" height="14" rx="7" fill="#FFE84A" stroke="#2A211C" stroke-width="3"/>
+                    <g class="shin-body" stroke="#2A211C" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+                        <!-- legs -->
+                        <g class="leg leg-back">
+                            <rect x="80" y="200" width="16" height="30" rx="6" fill="#FFD7B5"/>
+                            <ellipse cx="86" cy="234" rx="15" ry="7" fill="#fff"/>
+                        </g>
+                        <g class="leg leg-front">
+                            <rect x="118" y="200" width="16" height="30" rx="6" fill="#FFD7B5"/>
+                            <ellipse cx="130" cy="234" rx="15" ry="7" fill="#fff"/>
+                        </g>
+                        <!-- back arm -->
+                        <g class="arm arm-back">
+                            <path d="M82 146 L68 180" stroke-width="24"/>
+                            <path d="M82 146 L68 180" stroke="#E63B2E" stroke-width="15"/>
+                            <circle cx="66" cy="187" r="9" fill="#FFD7B5"/>
+                        </g>
+                        <!-- shorts + shirt -->
+                        <path d="M70 186 L150 186 L153 214 L114 214 L110 202 L106 214 L67 214 Z" fill="#FFCE3A"/>
+                        <path d="M80 130 Q110 124 140 130 L150 192 Q110 198 70 192 Z" fill="#E63B2E"/>
+                        <!-- front arm -->
+                        <g class="arm arm-front">
+                            <path d="M138 146 L156 180" stroke-width="24"/>
+                            <path d="M138 146 L156 180" stroke="#E63B2E" stroke-width="15"/>
+                            <circle cx="158" cy="187" r="9" fill="#FFD7B5"/>
+                        </g>
+                        <!-- head -->
+                        <g class="head-tilt">
+                            <g class="head-anim">
+                                <ellipse cx="48" cy="90" rx="10" ry="13" fill="#FFD7B5"/>
+                                <path d="M60 40 C70 12 140 8 165 35 C185 55 190 90 180 110 C170 132 135 140 100 136 C65 133 40 120 38 95 C36 70 48 52 60 40 Z" fill="#FFD7B5"/>
+                                <path d="M58 42 C70 13 140 9 164 36 C150 31 128 34 116 50 C100 40 80 44 70 62 C62 60 54 54 58 42 Z" fill="#2A211C"/>
+                                <ellipse class="brow" cx="114" cy="57" rx="13" ry="6.5" fill="#2A211C" transform="rotate(-6 114 57)"/>
+                                <ellipse class="brow" cx="152" cy="55" rx="12" ry="6.5" fill="#2A211C" transform="rotate(4 152 55)"/>
+                                <g id="shin-eyes">
+                                    <ellipse cx="117" cy="78" rx="7" ry="9.5" fill="#2A211C" stroke="none"/>
+                                    <ellipse cx="151" cy="76" rx="7" ry="9.5" fill="#2A211C" stroke="none"/>
+                                    <circle cx="119" cy="74" r="2.4" fill="#fff" stroke="none"/>
+                                    <circle cx="153" cy="72" r="2.4" fill="#fff" stroke="none"/>
+                                </g>
+                                <ellipse class="blush" cx="166" cy="98" rx="9" ry="5.5" fill="#F6A5C0" stroke="none"/>
+                                <ellipse class="blush" cx="98" cy="102" rx="9" ry="5.5" fill="#F6A5C0" stroke="none"/>
+                                <path class="mouth" d="M128 108 Q140 124 152 107 Z" fill="#B8322A" stroke-width="3.5"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
